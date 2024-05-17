@@ -1,0 +1,76 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+<div class="wrapper main__section">
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="{% static 'main/img/main/mainsectionimg.png' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static 'main/img/main/orig.jpeg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static 'main/img/main/mainsectionimg.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Фильтрация -->
+<div class="wrapper filter__wrapper">
+    <h1 class="index__list__title">Список выпускников</h1>
+    
+</div>
+
+<div class="wrapper students__list__wrapper">
+    <ul class="graduate__list">
+        {% for graduate in graduates %}
+            <li class="graduate__item">
+                {% if graduate.foto %}
+                    <a class="cover" href="{{ graduate.get_absolute_url }}">
+                        <img src="{{ graduate.foto.url }}" alt="{{ graduate.fio }}">
+                        <img class="link" src="{% static 'main/img/btn-circle.svg' %}" alt="">
+                    </a>
+                {% endif %}
+                <!-- <p>Программное обеспечение</p> -->
+                <!-- <p>{{ graduate.spec.sokr_spec_name }}</p> -->
+                <a class="fio" href="{{ graduate.get_absolute_url }}">{{ graduate.fio }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<script src="{% static 'main/js/script.js' %}""></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelector('.slides');
+    const slideWidth = slider.offsetWidth; // Ширина слайдера
+    let slideIndex = 0;
+
+    function nextSlide() {
+        if (slideIndex < 2) {
+            slideIndex++;
+        } else {
+            slideIndex = 0;
+        }
+        slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+    }
+
+    // Автоматическое переключение слайдов каждые 3 секунды
+    setInterval(nextSlide, 3000);
+});
+</script>
+
+{% endblock content %}
+
+
+
+
+

@@ -1,0 +1,130 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+{% block title %} - {{graduate_info.fio}} {%endblock%}
+{% block content %}
+<section>
+  <div class="wrapper">
+    
+      <div class="graduate-main">
+          <div class="foto">
+            {% if graduate_info.foto %}
+              <img src="{{graduate_info.foto.url}}" alt="{{graduate_info.fio}}">
+            {% endif %}
+          </div>
+          <section class="graduate-info">
+            <div class="wrapper">
+                <div class="info">
+                  <h1>{{graduate_info.fio}}</h1>
+                </div>
+                <div class="cards">
+                  <div class="row">
+                      <h2>Специальность: </h2>
+                      <p>{{graduate_info.spec}}</p>
+                  </div>
+                  <div class="row">
+                      <h2>Квалификация: </h2>
+                      <p>{{graduate_info.qual}}</p>
+                  </div>
+                  <div class="row has__2__cols">
+                      <div>
+                        <h2>Дата поступления: </h2>
+                        <p>{{graduate_info.year_of_admission}}</p>
+                      </div>
+                      <div class="line"></div>
+                      <div>
+                        <h2>Дата выпуска: </h2>
+                        <p>{{graduate_info.year_of_issue}}</p>
+                      </div>
+                  </div>
+                  <div class="row mobile__row">
+                      <h2>Дата выпуска: </h2>
+                      <p>{{graduate_info.year_of_issue}}</p>
+                  </div>
+                </div>
+            </div>
+          </section>
+      </div>
+  </div>
+</section>
+
+
+{% if graduate_info.diplom and graduate_info.skill_pass %}
+
+<section class="diplom new__diplom__section">
+  <div class="wrapper">
+    <h1>Документы</h1>
+    <div class="buttons">
+        <div class="button">
+          <div class="button__top">
+            <p>Диплом</p>
+            <svg class="chevron" width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <div class="button__dropdown">
+            <img src="{{graduate_info.diplom.url}}" alt="Диплом" onClick="get_id(`${this.id}`)" id="dp" >
+          </div>
+        </div>
+        <div class="button">
+          <div class="button__top">
+            <p>Приложение (На казахском)</p>
+            <svg class="chevron" width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <div class="button__dropdown">
+            <img src="{{graduate_info.pril_kaz.url}}" alt="Приложение на казахском" onClick="get_id(`${this.id}`)" id="dp" >
+          </div>
+        </div>
+        <div class="button">
+          <div class="button__top">
+            <p>Приложение (На русском)</p>
+            <svg class="chevron" width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <div class="button__dropdown">
+            <img src="{{graduate_info.pril_ru.url}}" alt="Приложение на русском" onClick="get_id(`${this.id}`)" id="dp" >
+          </div>
+        </div>
+        <div class="button">
+          <div class="button__top">
+            <p>Skills-паспорт</p>
+            <svg class="chevron" width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <div class="button__dropdown">
+            <img src="{{graduate_info.skill_pass.url}}" alt="Skills-паспорт" onClick="get_id(`${this.id}`)" id='sp'>
+          </div>
+        </div>
+
+      
+
+    </div>
+  </div>
+</section>
+
+{% endif %}
+
+{% if graduate_info.ytb_url %}
+<section class="video">
+  <div class="wrapper">
+      <h1>Видео</h1>
+      <iframe src="{{graduate_info.ytb_url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+  </div>
+</section>
+{% endif %}
+
+<div id="myModal" class="modal">
+  <span class="close">×</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script src={% static 'main/js/script.js' %}></script>
+{% endblock %}
+
+
+

@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link rel="stylesheet" href="{%static 'main/css/styles.css'%}">
+</head>
+<body>
+    <div class="login">
+        <form method="POST" action="">
+            <h1 class="login__title">Войти</h1>
+            <input type="text" placeholder="Колледж">
+            <input type="password" placeholder="Пароль">
+            <a href="/main/" class="filter__btn signin__submit">Войти</a>
+        </form>
+    </div>
+</body>
+</html>

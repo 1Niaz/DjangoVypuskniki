@@ -1,0 +1,128 @@
+<div class="frame23">
+    <form method="GET" action="/">
+        <h1>Год выпуска</h1>
+        <div class="filter__col active">
+            <div class="choose__btn">Все</div>
+            {% for year in year_list %}
+                <div class="choose__btn">
+                    <!-- <a href=""> -->
+                        {{ year }}
+                    <!-- </a> -->
+                </div>
+            {% endfor %}
+        </div>
+        <h1>Специальность</h1>
+        <div class="filter__col active">
+            <div class="choose__btn">Все</div>
+            {% for spec in spec_list %}
+                <div class="choose__btn">
+                    <!-- <a href=""> -->
+                        {{ spec }}
+                    <!-- </a> -->
+                </div>
+            {% endfor %}
+        </div>
+        
+        <button class="filter__btn" type="submit">Найти</button>
+        <a class="filter__btn" href="{% url 'index' %}" class="reset-filter">Сбросить</a>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<form id="filter-form" method="GET" action="{% url 'index' %}">
+    <div class="filter__col">
+        <select name="specialization" id="specialization">
+            <option value="">Специальность (Все)</option>
+            {% for spec in spec_list %}
+                <option value="{{ spec }}" {% if spec == specialization %} selected {% endif %}>{{ spec }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="filter__col">
+        <select name="year" id="year">
+            <option value="">Год выпуска (Все)</option>
+            {% for year in year_list %}
+                <option value="{{ year }}" {% if year == year_param %} selected {% endif %}>{{ year }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button class="filter__btn" type="submit">Применить фильтр</button>
+    <a class="filter__btn" href="{% url 'index' %}" class="reset-filter">Сбросить фильтр</a>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="frame10">
+    <div class="text">
+        <div class="title">Выпускники колледжа</div>
+        <div class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="search__container">
+            <div class="search">
+                <p>Поиск</p>
+                <img class="search__arrow" src="{% static 'main/img/icons/arrow.svg' %}" alt="">
+            </div>
+            <a class="filter__btn" href="{% url 'index' %}" class="reset-filter">Сбросить</a>
+        </div>
+        <div class="frame23">
+            <form id="filter-form" method="GET">
+                <h1>Год выпуска</h1>
+                <div id="years__col" class="filter__col active">
+                    <a href="#" class="choose__btn" data-year="">Все</a>
+                    {% for year in year_list %}
+                        <a href="#" class="choose__btn" data-year="{{ year }}">{{ year }}</a>
+                    {% endfor %}
+                </div>
+                <h1>Специальность</h1>
+                <div class="filter__col active">
+                    <a href="#" class="choose__btn" data-spec="">Все</a>
+                    {% for spec in spec_list %}
+                        <a href="#" class="choose__btn" data-spec="{{ spec }}">{{ spec }}</a>
+                    {% endfor %}
+                </div>
+                <button id="filter-submit" class="filter__btn" type="button">Найти</button>
+                <a href="{% url 'index' %}" class="filter__btn reset-filter">Сбросить</a>
+            </form>
+        </div>
+        
+    </div>
+    <div class="cover">
+        <img src="{% static 'main/img/mainsectionimg.png' %}" alt="">
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

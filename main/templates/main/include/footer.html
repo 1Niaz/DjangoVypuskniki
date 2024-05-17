@@ -1,0 +1,44 @@
+{% load static %}
+<footer>
+    <div class="wrapper">
+        <div class="row-1">
+            <div class="col-1">
+                <div class="logo footer__logo">
+                    <a href="/">
+                        <img src="{% static 'main/img/logo/logo2.png' %}" alt="">
+                    </a>
+                    <!-- <p>Колледж информационных технологий</p> -->
+                </div>
+                <div class="footer__info">
+                    8(7182)62-58-06, kit.pvl@mbx.kz, г.Павлодар, ул. Лермонтова 93
+                </div>
+            </div>
+            <!-- <h2 class="title mobile__title">Наши социальные партнеры:</h2>
+            <div class="col-2">
+                <h2 class="title desktop__title">Наши социальные партнеры:</h2>
+                <div class="partners">
+                    {% if social_partners %}
+                        {% for partner in social_partners %}
+                        <div class="partner">
+                            <img src="{{ partner.logo_img.url }}" alt="Logo">
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
+    <div class="row-2">
+        <div class="wrapper">
+            <p><span class="copyright">C</span>KIT 2023</p>
+            <div class="social-icons">
+                <a href=""><img src="{% static 'main/img/icons/facebook.png' %}" alt=""></a>
+                <a href=""><img src="{% static 'main/img/icons/instagram.png' %}" alt=""></a>
+                <a href=""><img src="{% static 'main/img/icons/tiktok.png' %}" alt=""></a>
+                <a href=""><img src="{% static 'main/img/icons/youtube.png' %}" alt=""></a>
+            </div>
+        </div>
+    </div>
+</footer>

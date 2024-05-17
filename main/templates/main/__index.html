@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="wrapper main__section">
+    <div class="shadow"></div>
+    <div class="frame10">
+        <div class="text">
+            <div class="title">Выпускники колледжа</div>
+            <div class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+            <div class="search__container">
+                <div class="search">
+                    <p>Поиск</p>
+                    <img class="search__arrow" src="{% static 'main/img/icons/arrow.svg' %}" alt="">
+                </div>
+                <a class="filter__btn" href="{% url 'index' %}" class="reset-filter">Сбросить</a>
+            </div>
+            <div class="frame23">
+                <form id="filter-form" method="GET" action="{% url 'index' %}">
+                    <div class="filter__col">
+                        <select name="specialization" id="specialization">
+                            <option value="">Специальность (Все)</option>
+                            {% for spec in spec_list %}
+                                <option value="{{ spec }}" {% if spec == specialization %} selected {% endif %}>{{ spec }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                
+                    <div class="filter__col">
+                        <select name="year" id="year">
+                            <option value="">Год выпуска (Все)</option>
+                            {% for year in year_list %}
+                                <option value="{{ year }}" {% if year == year_param %} selected {% endif %}>{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                
+                    <button class="filter__btn" type="submit">Применить фильтр</button>
+                    <a class="filter__btn" href="{% url 'index' %}" class="reset-filter">Сбросить фильтр</a>
+                </form>
+            </div>
+            
+        </div>
+        <div class="cover">
+            <img src="{% static 'main/img/mainsectionimg.png' %}" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Фильтрация -->
+<div class="wrapper filter__wrapper">
+    <h1>Список выпускников</h1>
+</div>
+
+<div class="wrapper students__list__wrapper">
+    <ul class="graduate__list">
+        {% for graduate in graduates %}
+            <li class="graduate__item">
+                {% if graduate.foto %}
+                    <a class="cover" href="{{ graduate.get_absolute_url }}">
+                        <img src="{{ graduate.foto.url }}" alt="{{ graduate.fio }}">
+                        <img class="link" src="{% static 'main/img/btn-circle.svg' %}" alt="">
+                    </a>
+                {% endif %}
+                <!-- <p>Программное обеспечение</p> -->
+                <p>{{ graduate.spec.sokr_spec_name }}</p>
+                <a class="fio" href="{{ graduate.get_absolute_url }}">{{ graduate.fio }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<script src="{% static 'main/js/script.js' %}""></script>
+
+
+
+{% endblock content %}
+
+
+
+
+
